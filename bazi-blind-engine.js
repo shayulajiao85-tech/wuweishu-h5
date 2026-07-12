@@ -20,12 +20,12 @@ if(p.ss==="偏财"){fatherScore+=(i===0?2:i===1?1.5:1);if(p.cg){p.cg.forEach(fun
 });
 motherScore+=wxAll[yinWx]||0;fatherScore+=wxAll[caiWx]||0;
 var result={};
-if(hasNianChong){result.whoFirst="年柱为父母宫，你的年柱受冲克，说明与父母缘分偏薄，或父母身体不太好，或早年离家。具体谁先走——";}
+if(hasNianChong){result.whoFirst="你年柱被冲着了一一父母宫不稳。不是说你跟他们感情不好，而是聚少离多、或者他们身体不太好、或者你早早独立。具体谁先走——";}
 else{result.whoFirst="从命局来看——";}
-if(motherScore<1.5&&fatherScore<1.5){result.whoFirst+="父母双亲在命局中都不够得力，身子骨偏弱，需要子女多费心。谁先走要看大运流年冲克。";}
-else if(motherScore>=fatherScore+1){result.whoFirst+="母亲方面比较得力，父亲偏弱。父亲的身体需要多关注，尤其是大运流年冲克年柱的时候。";}
-else if(fatherScore>=motherScore+1){result.whoFirst+="父亲方面比较得力，母亲偏弱。母亲的身体需要多关注，尤其是大运流年冲克年柱的时候。";}
-else{result.whoFirst+="父母双亲在命局中都算得力，寿元不错。但人上了年纪，做子女的多回家看看比什么都强。";}
+if(motherScore<1.5&&fatherScore<1.5){result.whoFirst+="父母双方都不算太壮实。上了年纪各种小毛病就来了一一多费心、多回家。能陪的时候别省着。谁先走要看大运流年冲克。";}
+else if(motherScore>=fatherScore+1){result.whoFirst+="母亲这边比较得力。父亲身体弱一些一一他报喜不报忧，你主动多打个电话。";}
+else if(fatherScore>=motherScore+1){result.whoFirst+="父亲这边比较得力。母亲身子弱一一她总说没事，你别真信。多回家看看。";}
+else{result.whoFirst+="父母双亲都硬朗，寿元不短。在外面忙归忙，过节回去坐坐比寄东西强。";}
 var mYears=[];
 bazi.pillars.forEach(function(p,i){
 if(i===0){p.cg.forEach(function(c){var wx=WX_MAP[c];if(wx===yinWx)result.whoFirst+=" 年支藏有母星"+c+"，母亲根基还算扎实。";if(wx===caiWx)result.whoFirst+=" 年支藏有父星"+c+"，父亲根基还算扎实。";});}
@@ -160,23 +160,23 @@ var ss=bazi.pillars.map(function(p){return p.ss;});
 var descs=[];
 var zhWx=WX_MAP[riZhi];
 // 1. 配偶
-if(riWx===zhWx){descs.push("你和你那口子性格差不多，好起来像一个人，吵起来谁也不低头。婚姻就是搭伙过日子，有时候你让一步，对方也让一步，日子就顺了。");}
-else if(SHENG_OBJ[riWx]===zhWx){descs.push("在家里你是操心多的那个人。啥事都是你张罗，啥活都是你干。累是累点，但你这样的人，家里离了你就转不动。");}
-else if(KE_OBJ[riWx]===zhWx){descs.push("你在家里说话算话。不是那种大男子主义或者河东狮吼，而是对方习惯听你的。但管太紧了也容易出事，给对方留点空间。");}
-else if(SHENG_OBJ[zhWx]===riWx){descs.push("你那位对你好，是真心实意的那种好。但有时候好得太过了，你也别理所当然，记得对对方也好一点。");}
+if(riWx===zhWx){descs.push("你跟你那位性格像，好起来跟一个人似的，吵起来谁也不先低头。平常日子就是这样——你让一步、她让一步，就过了。婚姻就是搭伙过日子，有时候你让一步，对方也让一步，日子就顺了。");}
+else if(SHENG_OBJ[riWx]===zhWx){descs.push("家里你是操心多的那个。啥事你张罗、啥活你干。累是累，但说句实话——这个家离了你确实转不太动。偶尔也让自己歇歇。");}
+else if(KE_OBJ[riWx]===zhWx){descs.push("你在家里说话有分量——不是凶，是对方习惯了听你拿主意。不过管太紧容易反弹。该放的放一点，给对方留口气。");}
+else if(SHENG_OBJ[zhWx]===riWx){descs.push("你那位对你是真的好，不掺假。但好得多了容易变成理所当然——记得偶尔也往回给一点，哪怕就是一句辛苦了。");}
 // 2. 日支稳定性
 var chongMap={"子":"午","午":"子","丑":"未","未":"丑","寅":"申","申":"寅","卯":"酉","酉":"卯","辰":"戌","戌":"辰","巳":"亥","亥":"巳"};
-if(bazi.pillars.some(function(p,i){return i!==2&&p.zhi===chongMap[riZhi];})){descs.push("你夫妻宫被冲，家庭关系不是那种风平浪静的。有时候吵吵闹闹反而是好事，总比冷战强。");}
+if(bazi.pillars.some(function(p,i){return i!==2&&p.zhi===chongMap[riZhi];})){descs.push("你夫妻宫被冲了一下，家里不是那种平平静静过日子的类型。不过吵吵闹闹也比冷战好——至少还在乎。");}
 // 3. 子女
 var shiSS=bazi.pillars[3].ss;
-if(shiSS==="食神"||shiSS==="伤官"){descs.push("时柱是食伤——食伤代表子女。看来你晚年的福气在子女身上。孩子孝顺，老了有人管。");}
+if(shiSS==="食神"||shiSS==="伤官"){descs.push("时柱子女宫带了食伤——老来福在子女身上。孩子将来孝顺，你的晚年不会太孤单。");}
 else{descs.push("时柱是"+shiSS+"——子女这块不用太操心。儿孙自有儿孙福，你该做的做到了就行。");}
 var shiWx=WX_MAP[shiZhi];
 if(SHENG_OBJ[riWx]===shiWx)descs.push("时柱子女宫对你有情，孩子跟你亲，老了享子女的福。");
-if(KE_BY[riWx]===shiWx)descs.push("子女这事多少有点操心，但不算大问题。孩子有孩子的路，你少管一点反而更好。");
+if(KE_BY[riWx]===shiWx)descs.push("子女的事别太操心——他们有他们的活法。你管得越少，他们反而走得越稳。");
 // 4. 比劫
 var biJieCount=ss.filter(function(s){return s==="比肩"||s==="劫财";}).length;
-if(biJieCount>=2)descs.push("你命里比劫多，兄弟姐妹或者朋友多。好处是有人帮衬，坏处是家里面容易有争执。记住一句话：亲兄弟明算账。");
+if(biJieCount>=2)descs.push("你命里比劫多，兄弟姐妹或者铁哥们不少。有人帮是好——但因为钱的事闹掰的也不少。亲兄弟明算账，话虽然俗，但管用。");
 return descs;
 }
 // ===== 5年运段 =====
