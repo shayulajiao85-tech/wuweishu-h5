@@ -65,15 +65,15 @@ if(hasHe){result.descs.push("日支"+riZhi+"在原局有合——你这个人异
 if(gender==="male"){
 var zhengCai=ss.filter(function(s){return s==="正财";}).length;
 var pianCai=ss.filter(function(s){return s==="偏财";}).length;
-if(zhengCai>0&&pianCai>0){result.descs.push("正偏财混杂——你这辈子至少有两段比较深的感情。第一段可能因为各种原因没走到最后，第二段才安稳。");result.count=Math.max(result.count,2);zhPts+=2;}
-else if(zhengCai>0){result.descs.push("正财到位，妻星得力。你这人对待感情比较认真，适合找踏实过日子的。婚姻基础不错。");zhPts-=1;}
-else if(pianCai>0){result.descs.push("偏财是妾星。你这个人吧，对感情的态度比较随意，不太愿意被绑住。但偏财也不代表不专一，关键是你要找到对的人。");zhPts+=1;}
+if(zhengCai>0&&pianCai>0){result.descs.push("感情上不会太顺——正财偏财都有，说明你不是只谈一段就结婚的人。第一段多半是来教你东西的，不是来陪你一辈子的。别纠结，经历了就过了。");result.count=Math.max(result.count,2);zhPts+=2;}
+else if(zhengCai>0){result.descs.push("妻星到位了。你是那种认真处对象的人，不玩虚的。找踏实过日子的，她也不会亏待你。");zhPts-=1;}
+else if(pianCai>0){result.descs.push("偏财是妾星——不是说你要找小的，是说你这人自由惯了，不想被管太死。这也行，但要碰对人——愿意给你空间的人，才绑不住你。");zhPts+=1;}
 else{result.descs.push("财星不显，你对感情这件事不太敏感。不是找不到，是缘分来得晚。建议三十以后再看婚姻，反而更稳。");zhPts+=1;}
 }else{
 var zhengGuan=ss.filter(function(s){return s==="正官";}).length;
 var qiSha=ss.filter(function(s){return s==="七杀";}).length;
-if(zhengGuan>0&&qiSha>0){result.descs.push("官杀混杂——你这辈子至少有两段比较深的感情。第一段容易遇到不合适的人，第二段才可能是正缘。");result.count=Math.max(result.count,2);zhPts+=2;}
-else if(zhengGuan>0){result.descs.push("正官到位，夫星得力。你适合找稳重的、有责任心的对象。婚姻基础不错，不会大起大落。");zhPts-=1;}
+if(zhengGuan>0&&qiSha>0){result.descs.push("官杀都有——你感情上可能走两段。头一段容易碰上不合适的人，不是你的错，是那个人刚好在那个时间出现在那里。第二段才是安稳的。");result.count=Math.max(result.count,2);zhPts+=2;}
+else if(zhengGuan>0){result.descs.push("夫星稳了。你适合找那种靠谱的、不花里胡哨的。他不用多浪漫——能把答应你的事一件件做到的，就是对的人。");zhPts-=1;}
 else if(qiSha>0){result.descs.push("七杀是偏夫星。你容易被有个性、有能力的男人吸引。但这种男人不好驾驭，感情里容易起波澜。自己要有主心骨。");zhPts+=1;}
 else{result.descs.push("官星不显，你的缘分比较淡。但这不是坏事——晚婚的人反而更清楚自己要什么。");zhPts+=1;}
 }
@@ -108,7 +108,7 @@ var descs=[];
 var riStrong=!wxAna.weak.includes(riWx);
 // 身强才能担财
 if(!riStrong&&caiCount>=2){descs.push("你财星是有的，但问题是——日主偏弱。就好像一个小身板的人突然中了大奖，钱来了你兜不住。《千里命稿》里讲这叫'财多身弱，富屋贫人'。先把自己的本事操练扎实了，钱来了才接得住。");}
-else if(riStrong&&caiCount>=2){descs.push("你这个人，命里带财，身子骨也硬朗。能挣能守，这辈子不差钱。");}
+else if(riStrong&&caiCount>=2){descs.push("命里带财，底子也够。你能挣也能守。钱的事不用太操心。");}
 else if(caiCount===1){descs.push("财运中等，正财为主。不适合赌，不适合投机，就适合老老实实学一门手艺、找一个稳定饭碗。细水长流比什么都强。");}
 else{descs.push("财星不显，这不一定穷——你可以靠手艺、靠技术、靠脑子吃饭。食伤生财才是你真正该走的路。");}
 // 食伤生财
@@ -140,7 +140,7 @@ var shangGuanCount=ss.filter(function(s){return s==="伤官";}).length;
 var shiShenCount=ss.filter(function(s){return s==="食神";}).length;
 // 七杀有制化
 if(qiShaCount>=1&&yinCount>=1){descs.push("你命里七杀有印星来化——这是'杀印相生'的好格局。《滴天髓》说'七杀有制化为权'。你适合在体制内、大公司，或者自己当老板管人。手里有权，但压力也不小。");}
-else if(qiShaCount>=1&&shiShenCount>=1){descs.push("七杀有食神来制——这也是不错的配置。你有魄力、有冲劲，适合创业、销售、军警这类硬朗的行当。");}
+else if(qiShaCount>=1&&shiShenCount>=1){descs.push("七杀有食神压着——你骨头硬、做事不怕事。创业、销售、当兵当警察这些硬朗的行当，你干得动。");}
 else if(qiShaCount>=1){descs.push("七杀无制——注意了。你这个人有冲劲、有魄力，但容易莽撞。《子平真诠》讲'七杀无制，其凶可知'。不是说你不好，是说你要学会约束自己，不能由着性子来。");}
 // 官杀混杂
 if(zhengGuanCount>0&&qiShaCount>0){descs.push("命局官杀混杂，正官七杀都有——你在事业上容易犹豫，又想按规矩来，又想打破规矩。这种内心拉扯会让你在事业上走弯路。选定一条路就走到黑最好。");}
